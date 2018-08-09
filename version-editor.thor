@@ -1,4 +1,3 @@
-require 'pry'
 require 'semantic'
 
 class SemVerEditor < Thor
