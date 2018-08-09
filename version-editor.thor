@@ -6,8 +6,19 @@ class SemVerEditor < Thor
   package_name "SemVerEditor"
 
   desc "bump_major", "increments the major version numbers for SERVICE"
-  def bump_major
-    find_semvers yaml, "major"
+  # method_option :keys, :type => :array, :default => [], :desc => "Optionally specify keys containing values to be bumped"
+  method_option :level, :type => :string, :default => "patch", :required => true, :desc => "specifiy major, minor or patch"
+  def bump
+    case options[:level]
+    when "major"
+      find_semvers yaml, "major"
+    when "minor"
+      find_semvers yaml, "minor"
+    when "patch"
+      find_semvers yaml, "patch"
+    else
+      p "invalid level specified"
+    end
   end
 
   desc "bump_minor", "increments the minor version numbers for SERVICE"
@@ -35,7 +46,7 @@ class SemVerEditor < Thor
       end
       if value.is_a?(String) && is_semver?(value) then
         hash_copy[key] = {}
-        hash.update(hash_copy)[key] = bump(value, level)
+        hash.update(hash_copy)[key] = increment(value, level)
       end
     end
   end
@@ -44,7 +55,7 @@ class SemVerEditor < Thor
     version.match(/^v\d+\.\d+\.\d+$/)
   end
 
-  def bump version, level
+  def increment version, level
     version = version.delete("v")
     old_version = Semantic::Version.new version
     old_version.increment!(level.to_sym).to_s.prepend("v")
