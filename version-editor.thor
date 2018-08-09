@@ -7,9 +7,26 @@ class SemVerEditor < Thor
 
   desc "bump", "increments the rsion numbers in a YAML file"
   # method_option :keys, :type => :array, :default => [], :desc => "Optionally specify keys containing values to be bumped"
-  method_option :level, :aliases => "-l", :type => :string, :default => "patch", :required => true, :enum => ['major', 'minor', 'patch'], :desc => "specifiy major, minor or patch"
-  method_option :file_path, :aliases => "-f", :type => :string, :required => true, :desc => "path to file"
-  method_option :output, :aliases => "-o", :type => :string, :default => "output.yaml", :desc => "output file name, default is ./output.yaml"
+  method_option :level,
+    :aliases => "-l",
+    :type => :string,
+    :default => "patch",
+    :required => true,
+    :enum => ['major', 'minor', 'patch'],
+    :desc => "specifiy major, minor or patch"
+
+  method_option :file_path,
+    :aliases => "-f",
+    :type => :string,
+    :required => true,
+    :desc => "path to file"
+
+  method_option :output,
+    :aliases => "-o",
+    :type => :string,
+    :default => "output.yaml",
+    :desc => "output file name, default is ./output.yaml"
+
   def bump
     case options[:level]
     when "major"
