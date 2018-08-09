@@ -21,11 +21,11 @@ class SemVerEditor < Thor
     :required => true,
     :desc => "path to file"
 
-  method_option :output,
+  method_option :outfile,
     :aliases => "-o",
     :type => :string,
-    :default => "output.yaml",
-    :desc => "output file name, default is ./output.yaml"
+    :default => "outfile.yaml",
+    :desc => "output file name, default is ./outfile.yaml"
 
   def bump
     case options[:level]
@@ -36,6 +36,7 @@ class SemVerEditor < Thor
     when "patch"
       find_semvers yaml, "patch"
     end
+    save_yaml
   end
 
   private
@@ -75,4 +76,11 @@ class SemVerEditor < Thor
     old_version.increment!(level.to_sym).to_s.prepend("v")
   end
 
+  def save_yaml
+    file = options[:outfile]
+    output = File.open( file,"w" )
+    output << yaml.to_yaml
+    output.close
+    puts "Your file was written to #{file}."
+  end
 end
