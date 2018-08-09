@@ -1,0 +1,36 @@
+global:
+  imagePullPolicy: IfNotPresent
+  provider: example
+  nodeEnv: production
+  logLevel: debug
+  environment: production
+  apnEnvironment: production
+  group: backend
+  mode: standalone
+  jaegerEnabled: false
+  jaegerHost: jaeger-aio
+
+advisorUi:
+  replicaCount: 3
+  image:
+    dockerTag: v2.13.1
+
+advisorsApi:
+  replicaCount: 3
+  image:
+    dockerTag: v4.27.0
+
+adminApi:
+  replicaCount: 3
+  image:
+    dockerTag: v1.31.0
+
+ordersService:
+  replicaCount: 3
+  image:
+    dockerTag: v1.54.0
+
+permissionsService:
+  replicaCount: 3
+  image:
+    dockerTag: v1.26.3

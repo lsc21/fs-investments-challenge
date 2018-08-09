@@ -1,0 +1,34 @@
+Summary: Write code that consumes a YAML file, increments any embedded version
+numbers in a variety of ways, and outputs the changed file.
+
+You may use any language, libraries or tools you want, as long as you will be
+able to demonstrate your solution in person. Code that you can email to the
+interviewers ahead of time usually works best, but other means of
+demonstration, such as a laptop with the necessary tools loaded, would be fine
+as well.
+
+Input Specification: YAML file; see included "example.yaml"
+
+       Note: Don't rely on the specific structure of the included example, be
+       prepared to auto-detect version strings or take YAML key names/patterns
+       as an argument.
+
+Output Specification: Generate a YAML file that is the same as the input,
+       except with version numbers changed. Include provisions for how to
+       increment the version numbers (major, minor, release, filtering by key
+       name, etc.).
+
+Be prepared to discuss:
+
+    Testing strategies
+    Difficulties you had and how you solved them
+
+Suggestion:
+
+    Your code should be correct first, have good style and comments second, and
+    then be clever/fast as a distant third.
+
+Who to contact when you have questions:
+
+    Andrew Barnett <andrew.barnett@fsinvestments.com>
+    Jeff Richie <jeffrey.richie@fsinvestments.com>
