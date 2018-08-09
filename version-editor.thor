@@ -7,26 +7,23 @@ class SemVerEditor < Thor
 
   desc "bump_major", "increments the major version numbers for SERVICE"
   def bump_major
-    save_yaml
-    find_semvers @yaml, "major"
+    find_semvers yaml, "major"
   end
 
   desc "bump_minor", "increments the minor version numbers for SERVICE"
   def bump_minor
-    save_yaml
-    find_semvers @yaml, "minor"
+    find_semvers yaml, "minor"
   end
 
   desc "bump_patch", "increments the path version numbers for SERVICE"
   def bump_patch
-    save_yaml
-    find_semvers @yaml, "patch"
+    find_semvers yaml, "patch"
   end
 
   private
 
-  def save_yaml
-    @yaml = YAML.load_file("artifacts/example.yaml")
+  def yaml
+    @yaml ||= YAML.load_file("artifacts/example.yaml")
   end
 
   def find_semvers hash, level
