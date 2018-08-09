@@ -5,9 +5,11 @@ class SemVerEditor < Thor
 
   package_name "SemVerEditor"
 
-  desc "bump_major", "increments the major version numbers for SERVICE"
+  desc "bump", "increments the rsion numbers in a YAML file"
   # method_option :keys, :type => :array, :default => [], :desc => "Optionally specify keys containing values to be bumped"
-  method_option :level, :type => :string, :default => "patch", :required => true, :desc => "specifiy major, minor or patch"
+  method_option :level, :aliases => "-l", :type => :string, :default => "patch", :required => true, :enum => ['major', 'minor', 'patch'], :desc => "specifiy major, minor or patch"
+  method_option :file_path, :aliases => "-f", :type => :string, :required => true, :desc => "path to file"
+  method_option :output, :aliases => "-o", :type => :string, :default => "output.yaml", :desc => "output file name, default is ./output.yaml"
   def bump
     case options[:level]
     when "major"
@@ -16,25 +18,20 @@ class SemVerEditor < Thor
       find_semvers yaml, "minor"
     when "patch"
       find_semvers yaml, "patch"
-    else
-      p "invalid level specified"
     end
-  end
-
-  desc "bump_minor", "increments the minor version numbers for SERVICE"
-  def bump_minor
-    find_semvers yaml, "minor"
-  end
-
-  desc "bump_patch", "increments the path version numbers for SERVICE"
-  def bump_patch
-    find_semvers yaml, "patch"
   end
 
   private
 
+  def file
+    @file ||= File.open options[:file_path]
+  rescue Errno::ENOENT
+    puts "Your file could not be found. Please double-check your path."
+    exit(1)
+  end
+
   def yaml
-    @yaml ||= YAML.load_file("artifacts/example.yaml")
+    @yaml ||= YAML.load_file(file)
   end
 
   def find_semvers hash, level
