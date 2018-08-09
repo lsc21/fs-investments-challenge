@@ -27,14 +27,7 @@ class SemVerEditor < Thor
     :desc => "output file name, default is ./outfile.yaml"
 
   def bump
-    case options[:level]
-    when "major"
-      find_semvers yaml, "major"
-    when "minor"
-      find_semvers yaml, "minor"
-    when "patch"
-      find_semvers yaml, "patch"
-    end
+    find_semvers yaml, options[:level]
     save_yaml
   end
 
