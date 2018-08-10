@@ -17,7 +17,7 @@ class SemVerEditor < Thor
     :default => "patch",
     :required => true,
     :enum => ['major', 'minor', 'patch'],
-    :desc => "specifiy major, minor or patch"
+    :desc => "specifiy version level"
 
   method_option :file_path,
     :aliases => "-f",
