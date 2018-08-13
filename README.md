@@ -35,22 +35,34 @@ These instructions will get you a copy of the project up and running on your loc
 ### Usage
 
 * Bump all major versions in the file
-```thor sem_ver_editor:bump -f artifacts/example.yaml -l major```
+```
+thor sem_ver_editor:bump -f artifacts/example.yaml -l major
+```
 
 * Bump all minor versions in the file
-```thor sem_ver_editor:bump -f artifacts/example.yaml -l minor```
+```
+thor sem_ver_editor:bump -f artifacts/example.yaml -l minor
+```
 
 * Bump all patch versions in the file
-```thor sem_ver_editor:bump -f artifacts/example.yaml -l patch```
+```
+thor sem_ver_editor:bump -f artifacts/example.yaml -l patch
+```
 
 * Bump all patch versions in the file
-```thor sem_ver_editor:bump -f artifacts/example.yaml -l patch```
+```
+thor sem_ver_editor:bump -f artifacts/example.yaml -l patch
+```
 
 * Bump all only the semver occurences in this tree of YAML
-```thor sem_ver_editor:bump -f artifacts/example.yaml -t advisorUI```
+```
+thor sem_ver_editor:bump -f artifacts/example.yaml -t advisorUI
+```
 
 * Bump all only the semver occurences matching this key
-```thor sem_ver_editor:bump -f artifacts/example.yaml -k test```
+```
+thor sem_ver_editor:bump -f artifacts/example.yaml -k test
+```
 
 
 ## Built With
