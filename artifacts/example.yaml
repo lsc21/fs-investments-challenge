@@ -34,3 +34,6 @@ permissionsService:
   replicaCount: 3
   image:
     dockerTag: v1.26.3
+  apiVersion:
+    testSemver1: v4.1.1
+    testSemver2: v3.2.3
