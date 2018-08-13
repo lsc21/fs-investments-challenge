@@ -34,24 +34,28 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Usage
 
-End with an example of getting some data out of the system or using it for a little demo
+* Bump all major versions in the file
+`thor sem_ver_editor:bump -f artifacts/example.yaml -l major`
 
-## Running the tests
+* Bump all minor versions in the file
+`thor sem_ver_editor:bump -f artifacts/example.yaml -l minor`
 
-Explain how to run the automated tests for this system
+* Bump all patch versions in the file
+`thor sem_ver_editor:bump -f artifacts/example.yaml -l patch`
+
+* Bump all patch versions in the file
+`thor sem_ver_editor:bump -f artifacts/example.yaml -l patch`
+
+* Bump all only the semver occurences in this tree of YAML
+`thor sem_ver_editor:bump -f artifacts/example.yaml -t advisorUI`
+
+* Bump all only the semver occurences matching this key
+`thor sem_ver_editor:bump -f artifacts/example.yaml -k test`
+
 
 ## Built With
 
 * [Semantic](https://github.com/jlindsey/semantic) - A Ruby utility class to aid in the storage, parsing, and comparison of SemVer-style Version strings.
 
-## Versioning
+* [Thor](https://github.com/khuda/thor) - An efficient tool for building self-documenting command line tools
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
-## Authors
-
-* **Louis Clotmann** - *Initial work* - [lsc21](https://github.com/lsc21)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
