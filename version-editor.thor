@@ -10,7 +10,13 @@ class SemVerEditor < Thor
     :aliases => "-k",
     :type => :array,
     :default => [],
-    :desc => "Optionally specify keys containing values to be bumped"
+    :desc => "Optionally target specific keys"
+
+  method_option :trees,
+    :aliases => "-t",
+    :type => :array,
+    :default => [],
+    :desc => "Optionally target all the values nested under these keys"
 
   method_option :level,
     :aliases => "-l",
@@ -33,7 +39,7 @@ class SemVerEditor < Thor
     :desc => "output file name, default is ./outfile.yaml"
 
   def bump
-    find_semvers yaml, options[:level]
+    find_semvers hash: yaml, level: options[:level], keys: options[:keys], trees: options[:trees]
     save_yaml
   end
 
@@ -50,14 +56,16 @@ class SemVerEditor < Thor
     @yaml ||= YAML.load_file(file)
   end
 
-  def find_semvers hash, level
+  def find_semvers hash:, level:, keys: [], trees: [], inside_tree: false
     hash.map do |key, value|
-    hash_copy = {}
+      hash_copy = {}
       if value.is_a?(Hash)
+        if trees.any? then next unless trees.include?(key.to_s) || inside_tree end
         hash_copy[key] = {}
-        find_semvers(value, level)
+        find_semvers(hash: value, level: level, keys: keys, trees: trees, inside_tree: trees.include?(key.to_s))
       end
       if value.is_a?(String) && is_semver?(value) then
+        if keys.any? then next unless keys.include?(key) end
         hash_copy[key] = {}
         hash.update(hash_copy)[key] = increment(value, level)
       end
