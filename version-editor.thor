@@ -72,7 +72,7 @@ class SemVerEditor < Thor
           inside_tree: trees.include?(key.to_s)
       end
       if value.is_a?(String) && is_semver?(value) then
-        if keys.any? then next unless keys.include?(key) end
+        if keys.any? then next unless keys.any?{|k| /#{Regexp.quote(k)}/.match?(key)} end
         hash_copy[key] = {}
         hash.update(hash_copy)[key] = increment(value, level)
       end
