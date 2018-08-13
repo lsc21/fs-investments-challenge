@@ -7,6 +7,7 @@ class SemVerEditor < Thor
   desc "bump", "increments the version numbers in a YAML file"
 
   method_option :keys,
+    :aliases => "-k",
     :type => :array,
     :default => [],
     :desc => "Optionally specify keys containing values to be bumped"
