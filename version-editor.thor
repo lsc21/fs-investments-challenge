@@ -39,7 +39,10 @@ class SemVerEditor < Thor
     :desc => "output file name, default is ./outfile.yaml"
 
   def bump
-    find_semvers hash: yaml, level: options[:level], keys: options[:keys], trees: options[:trees]
+    find_semvers hash: yaml,
+      level: options[:level],
+      keys: options[:keys],
+      trees: options[:trees]
     save_yaml
   end
 
@@ -62,7 +65,11 @@ class SemVerEditor < Thor
       if value.is_a?(Hash)
         if trees.any? then next unless trees.include?(key.to_s) || inside_tree end
         hash_copy[key] = {}
-        find_semvers(hash: value, level: level, keys: keys, trees: trees, inside_tree: trees.include?(key.to_s))
+        find_semvers hash: value,
+          level: level,
+          keys: keys,
+          trees: trees,
+          inside_tree: trees.include?(key.to_s)
       end
       if value.is_a?(String) && is_semver?(value) then
         if keys.any? then next unless keys.include?(key) end
