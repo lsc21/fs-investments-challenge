@@ -6,18 +6,6 @@ class SemVerEditor < Thor
 
   desc "bump", "increments the version numbers in a YAML file"
 
-  method_option :keys,
-    :aliases => "-k",
-    :type => :array,
-    :default => [],
-    :desc => "Optionally target specific keys"
-
-  method_option :trees,
-    :aliases => "-t",
-    :type => :array,
-    :default => [],
-    :desc => "Optionally target all the values nested under these keys"
-
   method_option :level,
     :aliases => "-l",
     :type => :string,
@@ -31,6 +19,18 @@ class SemVerEditor < Thor
     :type => :string,
     :required => true,
     :desc => "path to file"
+
+  method_option :keys,
+    :aliases => "-k",
+    :type => :array,
+    :default => [],
+    :desc => "Optionally target specific keys"
+
+  method_option :trees,
+    :aliases => "-t",
+    :type => :array,
+    :default => [],
+    :desc => "Optionally target all the values nested under these keys"
 
   method_option :outfile,
     :aliases => "-o",
