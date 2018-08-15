@@ -50,6 +50,10 @@ class SemVerEditor < Thor
     save_yaml
   end
 
+  def self.exit_on_failure?
+    true
+  end
+
   private
 
   def file
