@@ -4,9 +4,9 @@ require 'thor'
 require 'semantic'
 require 'yaml'
 
-class SemVerEditor < Thor
+class VersionEditor < Thor
 
-  package_name "SemVerEditor"
+  package_name "VersionEditor"
 
   desc "bump", "increments the version numbers in a YAML file"
 
@@ -106,4 +106,4 @@ class SemVerEditor < Thor
   end
 end
 
-SemVerEditor.start
+VersionEditor.start
