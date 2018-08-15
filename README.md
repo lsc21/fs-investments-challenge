@@ -30,38 +30,42 @@ name, etc.).
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+### Setup
+
+1. Clone the repo.
+2. `chmod +x version-editor.thor`
+3. Issue a command.
 
 ### Usage
 
 * Bump all major versions in the file
 ```
-thor sem_ver_editor:bump -f artifacts/example.yaml -l major
+./version-editor bump -f artifacts/example.yaml -l major
 ```
 
 * Bump all minor versions in the file
 ```
-thor sem_ver_editor:bump -f artifacts/example.yaml -l minor
+./version-editor bump -f artifacts/example.yaml -l minor
 ```
 
 * Bump all patch versions in the file
 ```
-thor sem_ver_editor:bump -f artifacts/example.yaml -l patch
+./version-editor bump -f artifacts/example.yaml -l patch
 ```
 
 * Bump all patch versions in the file
 ```
-thor sem_ver_editor:bump -f artifacts/example.yaml -l patch
+./version-editor bump -f artifacts/example.yaml -l patch
 ```
 
 * Bump all only the semver occurences in this tree of YAML
 ```
-thor sem_ver_editor:bump -f artifacts/example.yaml -t advisorUI
+./version-editor bump -f artifacts/example.yaml -t advisorUI
 ```
 
 * Bump all only the semver occurences matching this key
 ```
-thor sem_ver_editor:bump -f artifacts/example.yaml -k test
+./version-editor bump -f artifacts/example.yaml -k test
 ```
 
 

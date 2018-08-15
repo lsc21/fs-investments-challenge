@@ -1,4 +1,8 @@
+#!/usr/bin/env ruby
+require "rubygems" # ruby1.9 doesn't "require" it though
+require 'thor'
 require 'semantic'
+require 'yaml'
 
 class SemVerEditor < Thor
 
@@ -97,3 +101,5 @@ class SemVerEditor < Thor
     puts "Your file was written to #{file}."
   end
 end
+
+SemVerEditor.start
