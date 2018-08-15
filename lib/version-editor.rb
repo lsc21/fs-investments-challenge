@@ -102,7 +102,6 @@ class VersionEditor < Thor
     output = File.open( file,"w" )
     output << yaml.to_yaml
     output.close
-    puts "Your file was written to #{file}."
   end
 end
 

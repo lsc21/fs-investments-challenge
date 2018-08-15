@@ -33,39 +33,39 @@ These instructions will get you a copy of the project up and running on your loc
 ### Setup
 
 1. Clone the repo.
-2. `chmod +x version-editor.thor`
+2. `chmod +x libversion-editor.rb`
 3. Issue a command.
 
 ### Usage
 
 * Bump all major versions in the file
 ```
-./version-editor bump -f artifacts/example.yaml -l major
+./lib/version-editor.rb bump -f artifacts/example.yaml -l major
 ```
 
 * Bump all minor versions in the file
 ```
-./version-editor bump -f artifacts/example.yaml -l minor
+./lib/version-editor.rb bump -f artifacts/example.yaml -l minor
 ```
 
 * Bump all patch versions in the file
 ```
-./version-editor bump -f artifacts/example.yaml -l patch
+./lib/version-editor.rb bump -f artifacts/example.yaml -l patch
 ```
 
 * Bump all patch versions in the file
 ```
-./version-editor bump -f artifacts/example.yaml -l patch
+./lib/version-editor.rb bump -f artifacts/example.yaml -l patch
 ```
 
 * Bump all only the semver occurences in this tree of YAML
 ```
-./version-editor bump -f artifacts/example.yaml -t advisorUI
+./lib/version-editor.rb bump -f artifacts/example.yaml -t advisorUI
 ```
 
 * Bump all only the semver occurences matching this key
 ```
-./version-editor bump -f artifacts/example.yaml -k test
+./lib/version-editor.rb bump -f artifacts/example.yaml -k test
 ```
 
 
