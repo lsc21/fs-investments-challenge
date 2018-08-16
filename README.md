@@ -1,5 +1,7 @@
 # FS Investments Code Challenge
 
+[![Build Status](https://travis-ci.org/lsc21/fs-investments-challenge.svg?branch=master)](https://travis-ci.org/lsc21/fs-investments-challenge)
+
 ## Summary
 
 Write code that consumes a YAML file, increments any embedded version
