@@ -31,7 +31,7 @@ describe VersionEditor do
 
   context 'when targeting specific keys' do
 
-    it 'bumps all the semver values with a matching key' do
+    it 'bumps only the semver values with a matching key' do
       test_bump options: [ "bump", "-f", "./artifacts/example.yaml", "-l", 'major', "-k", "testSemver2" ],
         expectations: { advisorUi: 'v2.13.1', permissionsService: 'v1.26.3', adminApi: 'v1.31.0', testSemver2: "v4.0.0" }
       test_bump options: [ "bump", "-f", "./artifacts/example.yaml", "-l", 'major', "-k", "dockerTag" ],
