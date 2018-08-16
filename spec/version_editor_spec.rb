@@ -28,16 +28,24 @@ describe VersionEditor do
 
   end
 
+
   context 'when targeting specific keys' do
 
-    it 'bumps all the semver values by a major version' do
+    it 'bumps all the semver values with a matching key' do
       test_bump options: [ "bump", "-f", "./artifacts/example.yaml", "-l", 'major', "-k", "testSemver2" ],
         expectations: { advisorUi: 'v2.13.1', permissionsService: 'v1.26.3', adminApi: 'v1.31.0', testSemver2: "v4.0.0" }
-    end
-
-    it 'bumps all the semver values by a major version' do
       test_bump options: [ "bump", "-f", "./artifacts/example.yaml", "-l", 'major', "-k", "dockerTag" ],
         expectations: { advisorUi: 'v3.0.0', permissionsService: 'v2.0.0', adminApi: 'v2.0.0', testSemver2: "v3.2.3" }
+    end
+
+  end
+
+
+  context 'when targeting a specific tree' do
+
+    it 'bumps only the children of that tree' do
+      test_bump options: [ "bump", "-f", "./artifacts/example.yaml", "-l", 'major', "-t", "permissionsService" ],
+        expectations: { advisorUi: 'v2.13.1', permissionsService: 'v2.0.0', adminApi: 'v1.31.0', testSemver2: "v4.0.0" }
     end
 
   end
